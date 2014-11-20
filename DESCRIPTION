@@ -1,0 +1,9 @@
+Package: MRANtools
+Title: Tools to query and work with MRAN snapshots
+Version: 0.0-1
+Authors@R: "Andrie de Vries <andrie@revolutionanalytics.com> [aut, cre]"
+Description: Tools to query and work with MRAN snapshots
+Depends:
+    R (>= 3.1.1)
+License: GPL-2
+LazyData: true
