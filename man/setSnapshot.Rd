@@ -6,7 +6,7 @@
 setSnapshot(date, MRANroot = "http://mran.revolutionanalytics.com/snapshot/")
 }
 \arguments{
-\item{date}{Character vector with ISO date, e.g. "2014-09-17".}
+\item{date}{Character vector with single ISO date, e.g. "2014-09-17".}
 
 \item{MRANroot}{URL containing snapshots}
 }
