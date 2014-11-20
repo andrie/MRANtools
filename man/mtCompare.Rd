@@ -14,6 +14,7 @@ mtCompare(dates, type = "source")
 Compare package status on two different MRAN snapshot dates.
 }
 \examples{
+# Summarise package differences between two snapshot dates
 x <- mtCompare(c("2014-10-01", "2014-11-15"))
 str(x)
 }
