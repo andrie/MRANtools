@@ -3,12 +3,18 @@
 #' @inheritParams setSnapshot
 #'
 #' @param type character, indicating the type of package to download and install.  Possible values are (currently) "source", "mac.binary", "mac.binary.mavericks" and "win.binary".
+#' @param fields Passed to \code{\link[utils]{available.packages}}
 #'
 #' @export
-mtPkgAvail <- function(date, type="source"){
-  available.packages(
-    contrib.url(setSnapshot(date), type=type)
-  )
+mtPkgAvail <- function(date){  #}, type="source", fields=NULL){
+#   available.packages(
+#     contrib.url(setSnapshot(date), type=type),
+#     fields=fields
+#   )
+  url <- "http://mran.revolutionanalytics.com/snapshot/%s/web/packages/packages.rds"
+  z <- readRDS(gzcon(url(sprintf(url, date))))
+  rownames(z) <- gsub(".*/(.*?)/DESCRIPTION", "\\1", rownames(z))
+  z
 }
 
 
@@ -45,9 +51,10 @@ mtCompare <- function(dates, type="source"){
   } else {
     z <- lapply(FUN, foo, pdbList)
     names(z) <- names(FUN)
-    z[["updated"]] <- z$same[which(
+    idx <- which(
       pdbList[[1]][z$same, "Version"] != pdbList[[2]][z$same, "Version"]
-    )]
+    )
+    z[["updated"]] <- z$same[idx]
     z[["same"]] <- setdiff(z[["same"]], z[["updated"]])
     z
   }

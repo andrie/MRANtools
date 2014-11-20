@@ -3,12 +3,14 @@
 \alias{mtPkgAvail}
 \title{Find available packages for a given MRAN snapshot date}
 \usage{
-mtPkgAvail(date, type = "source")
+mtPkgAvail(date)
 }
 \arguments{
 \item{date}{Character vector with single ISO date, e.g. "2014-09-17".}
 
 \item{type}{character, indicating the type of package to download and install.  Possible values are (currently) "source", "mac.binary", "mac.binary.mavericks" and "win.binary".}
+
+\item{fields}{Passed to \code{\link[utils]{available.packages}}}
 }
 \description{
 Find available packages for a given MRAN snapshot date
